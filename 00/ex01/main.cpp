@@ -1,17 +1,26 @@
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
 #include <iostream>
 
-int main(void)
+int main()
 {
-    PhoneBook phoneBook;
+    std::string option;
+    PhoneBook phoneBook; 
 
-    std::cout <<
-        "-- OPTIONS --"
-        "\"ADD\": Save a new contact\n"
-        "\"SEARCh\": Display a specific contact\n"
-        "\"EXIT\"\n"
-        "-------------\n"
-        "Choose an option from the above: "
-    << std::endl;
+    while (option != "EXIT")
+    {
+        std::cout << "\"ADD\": Save a new contact" << std::endl;
+        std::cout << "\"SEARCH\": Display a specific contact" << std::endl;
+        std::cout << "\"EXIT\"" << std::endl;
+        std::cout << std::endl;
+        std::cout << "Choose an option from above: ";
+        std::cin.clear();
+        std::cin >> option;
+        std::cout << std::endl;
+
+        if (option == "ADD")
+            phoneBook.addContact();
+        else if (option == "SEARCH")
+            phoneBook.searchContact();
+    }
 }

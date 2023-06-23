@@ -2,12 +2,14 @@
 
 #include "Contact.hpp"
 
-class PhoneBook {
-    private:
-        Contact contacts[8];
+class PhoneBook
+{
+private:
+    Contact _contacts[8];
+    int     _contactCount;
 
-    public:
-        PhoneBook();
-        ~PhoneBook();
-        void addContact(Contact contact);
+public:
+    PhoneBook();
+    void addContact();
+    void searchContact();
 };

@@ -10,11 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= phone
+NAME		:= phoneBook
 
 SRCS		:= main.cpp     \
 			   Contact.cpp  \
-			   Phonebook.cpp
+			   PhoneBook.cpp
 
 CPP			:= c++
 CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98
