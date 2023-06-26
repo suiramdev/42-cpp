@@ -6,7 +6,7 @@ int main()
     Zombie* horde;
 
     horde = zombieHorde(4, "Jack"); 
-    horde->deleteHorde();
+    delete[] horde;
     horde = zombieHorde(9, "Harry"); 
-    horde->deleteHorde();
+    delete[] horde;
 }
