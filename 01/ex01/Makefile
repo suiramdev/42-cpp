@@ -16,8 +16,11 @@ SRCS		:= main.cpp			\
 			   Zombie.cpp		\
 			   zombieHorde.cpp	\
 
-CPP			:= c++
-CPPFLAGS	:= -Wall -Wextra -Werror -std=c++98
+BUILD_DIR	:= .build
+OBJS		:= $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
+
+CXX			:= c++
+CFLAGS		:= -Wall -Wextra -Werror -std=c++98
 
 RM          := rm -f
 MAKEFLAGS   += --silent --no-print-directory
@@ -25,13 +28,23 @@ DIR_DUP     = mkdir -p $(@D)
 
 all: $(NAME)
 
-$(NAME):
-	$(CPP) $(CPPFLAGS) $(SRCS) -o $(NAME)
-	echo "\033[0;32m✓ $@\033[0m"
+$(BUILD_DIR)/%.o: %.cpp
+	echo "→ Compiling $<"
+	$(DIR_DUP)
+	$(CXX) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CXX) $(CFLAGS) $(OBJS) -o $(NAME)
+	echo "\033[0;32m✓ Compiled $@ successfully\033[0m"
 
 bonus: all
 
 clean:
+	echo "→ Removing objects"
+	$(RM) -r $(BUILD_DIR)
+
+fclean: clean
+	echo "→ Removing binaries"
 	$(RM) $(NAME)
 
 re: clean all
