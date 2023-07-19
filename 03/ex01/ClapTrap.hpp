@@ -11,7 +11,7 @@ protected:
     unsigned int _attackDamage;
 public:
     ClapTrap(std::string name);
-    ~ClapTrap();
+    virtual ~ClapTrap();
 
     unsigned int getHitPoints() const;
     unsigned int getEnergyPoints() const;
