@@ -11,7 +11,7 @@ static std::string ask(std::string question)
     std::string answer;
 
     std::cout << question;
-    std::cin >> answer;
+    std::getline(std::cin, answer);
     if (answer.empty())
         return ask(question);
     return answer;

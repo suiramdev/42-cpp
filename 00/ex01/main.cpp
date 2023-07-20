@@ -14,7 +14,7 @@ int main()
         std::cout << "\"EXIT\"" << std::endl;
         std::cout << std::endl;
         std::cout << "Choose an option from above: ";
-        std::cin >> option;
+        std::getline(std::cin, option);
         std::cout << std::endl;
 
         if (option == "ADD")
