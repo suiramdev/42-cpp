@@ -12,6 +12,7 @@ protected:
 public:
     Animal();
     Animal(std::string type);
+    Animal(const Animal& animal);
     virtual ~Animal();
     virtual void makeSound() const;
     std::string getType() const;
