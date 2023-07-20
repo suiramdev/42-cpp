@@ -17,7 +17,7 @@ static void replace(std::string &str, const std::string &target, const std::stri
 
 int main(int argc, char *argv[])
 {
-    if (argc < 3)
+    if (argc < 4)
     {
         std::cerr << "Missing arguments" << std::endl;
         return 1;
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     }
 
     std::fstream outputFile;
-    outputFile.open(inputFileName + ".replace", std::ios::out);
+    outputFile.open((inputFileName + ".replace").c_str(), std::ios::out);
     if (!outputFile.is_open())
     {
         std::cerr << "Could not open output file" << std::endl;
