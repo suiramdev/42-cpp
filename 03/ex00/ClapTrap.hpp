@@ -10,9 +10,11 @@ private:
     unsigned int _energyPoints;
     unsigned int _attackDamage;
 public:
+    ClapTrap();
     ClapTrap(std::string name);
+    ClapTrap(const ClapTrap& clapTrap);
+    ClapTrap& operator=(const ClapTrap& clapTrap);
     virtual ~ClapTrap();
-
     unsigned int getHitPoints() const;
     unsigned int getEnergyPoints() const;
     unsigned int getAttackDamage() const;

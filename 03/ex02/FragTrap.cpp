@@ -1,12 +1,33 @@
 #include "FragTrap.hpp"
 #include <iostream>
 
+FragTrap::FragTrap() : ClapTrap()
+{
+    std::cout << "A FragTrap is born!" << std::endl;
+    _hitPoints = 100;
+    _energyPoints = 100;
+    _attackDamage = 30;
+}
+
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
     std::cout << "FragTrap " << _name << " is born!" << std::endl;
     _hitPoints = 100;
     _energyPoints = 100;
     _attackDamage = 30;
+}
+
+FragTrap::FragTrap(const FragTrap& fragTrap) : ClapTrap(fragTrap)
+{
+    std::cout << "FragTrap " << _name << " is born!" << std::endl;
+}
+
+FragTrap& FragTrap::operator=(const FragTrap& fragTrap)
+{
+    std::cout << "FragTrap assignment operator called" << std::endl;
+    if (this != &fragTrap)
+        ClapTrap::operator=(fragTrap);
+    return *this;
 }
 
 FragTrap::~FragTrap()

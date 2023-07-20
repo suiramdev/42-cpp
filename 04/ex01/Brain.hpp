@@ -9,5 +9,6 @@ private:
 public:
     Brain();
     Brain(const Brain& brain);
+    Brain& operator=(const Brain& brain);
     virtual ~Brain();
 };

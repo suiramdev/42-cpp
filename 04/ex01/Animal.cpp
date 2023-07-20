@@ -16,6 +16,18 @@ Animal::Animal(const Animal& animal) : _brain(new Brain(*animal._brain)), _type(
     std::cout << "Animal copy constructor called" << std::endl;
 }
 
+Animal& Animal::operator=(const Animal& animal)
+{
+    std::cout << "Animal assignment operator called" << std::endl;
+    if (this != &animal)
+    {
+        delete _brain;
+        _brain = new Brain(*animal._brain);
+        _type = animal._type;
+    }
+    return *this;
+}
+
 Animal::~Animal()
 {
     std::cout << "Animal destructor called" << std::endl;

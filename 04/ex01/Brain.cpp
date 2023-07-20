@@ -13,6 +13,17 @@ Brain::Brain(const Brain& brain)
         ideas[i] = brain.ideas[i];
 }
 
+Brain& Brain::operator=(const Brain& brain)
+{
+    std::cout << "Brain assignment operator called" << std::endl;
+    if (this != &brain)
+    {
+        for (int i = 0; i < 100; i++)
+            ideas[i] = brain.ideas[i];
+    }
+    return *this;
+}
+
 Brain::~Brain()
 {
     std::cout << "Brain destructor called" << std::endl;

@@ -1,9 +1,32 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
+ClapTrap::ClapTrap() : _hitPoints(10), _energyPoints(10), _attackDamage(0)
+{
+    std::cout << "A ClapTrap is born!" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
     std::cout << "ClapTrap " << _name << " is born!" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& clapTrap) : _name(clapTrap._name), _hitPoints(clapTrap._hitPoints), _energyPoints(clapTrap._energyPoints), _attackDamage(clapTrap._attackDamage)
+{
+    std::cout << "ClapTrap " << _name << " is born!" << std::endl;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& clapTrap)
+{
+    std::cout << "ClapTrap assignment operator called" << std::endl;
+    if (this != &clapTrap)
+    {
+        _name = clapTrap._name;
+        _hitPoints = clapTrap._hitPoints;
+        _energyPoints = clapTrap._energyPoints;
+        _attackDamage = clapTrap._attackDamage;
+    } 
+    return *this;
 }
 
 ClapTrap::~ClapTrap()
