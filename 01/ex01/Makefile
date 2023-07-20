@@ -14,7 +14,7 @@ NAME		:= zombie
 
 SRCS		:= main.cpp			\
 			   Zombie.cpp		\
-			   zombieHorde.cpp	\
+			   zombieHorde.cpp
 
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
