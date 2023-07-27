@@ -14,10 +14,10 @@ public:
     Bureaucrat(std::string name);
     Bureaucrat(std::string name, int grade);
     Bureaucrat(const Bureaucrat &bureaucrat);
-    Bureaucrat &operator=(const Bureaucrat &bureaucrat);
+    Bureaucrat &operator=(const Bureaucrat& bureaucrat);
     virtual ~Bureaucrat();
 
-    friend std::ostream& operator<<(std::ostream &stream, const Bureaucrat& bureaucrat);
+    friend std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bureaucrat);
 
     const std::string getName() const;
     int incGrade();

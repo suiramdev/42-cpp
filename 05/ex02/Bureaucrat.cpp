@@ -15,12 +15,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
     setGrade(grade);
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat) : _name(bureaucrat._name)
+Bureaucrat::Bureaucrat(const Bureaucrat& bureaucrat) : _name(bureaucrat._name)
 {
     setGrade(bureaucrat._grade);
 }
 
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat &bureaucrat)
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& bureaucrat)
 {
     setGrade(bureaucrat._grade);
     return *this;
@@ -30,7 +30,7 @@ Bureaucrat::~Bureaucrat()
 {
 }
 
-std::ostream& operator<<(std::ostream &stream, const Bureaucrat& bureaucrat)
+std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bureaucrat)
 {
     stream << bureaucrat._name << ", bureaucrat grade " << bureaucrat._grade;
     return stream;
@@ -66,7 +66,7 @@ int Bureaucrat::getGrade() const
     return _grade;
 }
 
-void Bureaucrat::signForm(AForm &form)
+void Bureaucrat::signForm(AForm& form)
 {
     try {
         form.beSigned(*this);
@@ -77,7 +77,7 @@ void Bureaucrat::signForm(AForm &form)
     }
 }
 
-void Bureaucrat::executeForm(AForm &form)
+void Bureaucrat::executeForm(AForm& form)
 {
     try {
         form.execute(*this);

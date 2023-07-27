@@ -10,11 +10,11 @@ AForm::AForm(std::string name, int signGrade, int execGrade) : _name(name), _sig
         throw AForm::GradeTooLowException();
 }
 
-AForm::AForm(const AForm &form) : _name(form._name), _signed(form._signed), _signGrade(form._signGrade), _execGrade(form._execGrade)
+AForm::AForm(const AForm& form) : _name(form._name), _signed(form._signed), _signGrade(form._signGrade), _execGrade(form._execGrade)
 {
 }
 
-AForm& AForm::operator=(const AForm &form)
+AForm& AForm::operator=(const AForm& form)
 {
     _signed = form._signed;
     return *this;
@@ -24,7 +24,7 @@ AForm::~AForm()
 {
 }
 
-std::ostream& operator<<(std::ostream &stream, const AForm& form)
+std::ostream& operator<<(std::ostream& stream, const AForm& form)
 {
     stream << form._name << ", sign grade " << form._signGrade << ", exec grade " << form._execGrade << ", signed " << form._signed;
     return stream;
@@ -40,7 +40,7 @@ bool AForm::isSigned() const
     return _signed;
 }
 
-void AForm::beSigned(Bureaucrat &bureaucrat)
+void AForm::beSigned(Bureaucrat& bureaucrat)
 {
     if (bureaucrat.getGrade() > _signGrade)
         throw AForm::GradeTooLowException();
@@ -57,7 +57,7 @@ int AForm::getExecGrade() const
     return _execGrade;
 }
 
-void AForm::execute(const Bureaucrat &bureaucrat) const
+void AForm::execute(const Bureaucrat& bureaucrat) const
 {
     if (!isSigned())
         throw AForm::NotSignedException();

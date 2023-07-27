@@ -18,11 +18,11 @@ public:
     Form &operator=(const Form &form);
     virtual ~Form();
 
-    friend std::ostream& operator<<(std::ostream &stream, const Form& form);
+    friend std::ostream& operator<<(std::ostream& stream, const Form& form);
 
     const std::string getName() const;
     bool isSigned() const;
-    void beSigned(class Bureaucrat &bureaucrat);
+    void beSigned(class Bureaucrat& bureaucrat);
     int getSignGrade() const;
     int getExecGrade() const;
 

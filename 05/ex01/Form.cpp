@@ -18,7 +18,7 @@ Form::Form(std::string name, int signGrade, int execGrade) : _name(name), _signe
         throw Form::GradeTooLowException();
 }
 
-Form::Form(const Form &form) : _name(form._name), _signed(form._signed), _signGrade(form._signGrade), _execGrade(form._execGrade)
+Form::Form(const Form& form) : _name(form._name), _signed(form._signed), _signGrade(form._signGrade), _execGrade(form._execGrade)
 {
 }
 
@@ -32,7 +32,7 @@ Form::~Form()
 {
 }
 
-std::ostream& operator<<(std::ostream &stream, const Form& form)
+std::ostream& operator<<(std::ostream& stream, const Form& form)
 {
     stream << form._name << ", sign grade " << form._signGrade << ", exec grade " << form._execGrade << ", signed " << form._signed;
     return stream;
@@ -48,7 +48,7 @@ bool Form::isSigned() const
     return _signed;
 }
 
-void Form::beSigned(Bureaucrat &bureaucrat)
+void Form::beSigned(Bureaucrat& bureaucrat)
 {
     if (bureaucrat.getGrade() > _signGrade)
         throw Form::GradeTooLowException();

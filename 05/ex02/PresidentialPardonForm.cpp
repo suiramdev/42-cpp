@@ -9,11 +9,11 @@ PresidentialPardonForm::PresidentialPardonForm(std::string const name) : AForm(n
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &form) : AForm(form)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const& form) : AForm(form)
 {
 }
 
-PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &form)
+PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const& form)
 {
     if (this != &form)
         AForm::operator=(form);
@@ -24,7 +24,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 {
 }
 
-void PresidentialPardonForm::execute(const Bureaucrat &bureaucrat) const
+void PresidentialPardonForm::execute(const Bureaucrat& bureaucrat) const
 {
     AForm::execute(bureaucrat);
     std::cout << getName() << " has been pardoned by Zafod Beeblebrox." << std::endl;

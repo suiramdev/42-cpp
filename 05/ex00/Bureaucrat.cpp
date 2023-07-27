@@ -14,7 +14,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
     setGrade(grade);
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat) : _name(bureaucrat._name)
+Bureaucrat::Bureaucrat(const Bureaucrat& bureaucrat) : _name(bureaucrat._name)
 {
     setGrade(bureaucrat._grade);
 }
@@ -29,7 +29,7 @@ Bureaucrat::~Bureaucrat()
 {
 }
 
-std::ostream& operator<<(std::ostream &stream, const Bureaucrat& bureaucrat)
+std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bureaucrat)
 {
     stream << bureaucrat._name << ", bureaucrat grade " << bureaucrat._grade;
     return stream;

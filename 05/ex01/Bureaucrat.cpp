@@ -15,12 +15,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
     setGrade(grade);
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat) : _name(bureaucrat._name)
+Bureaucrat::Bureaucrat(const Bureaucrat& bureaucrat) : _name(bureaucrat._name)
 {
     setGrade(bureaucrat._grade);
 }
 
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &bureaucrat)
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat& bureaucrat)
 {
     setGrade(bureaucrat._grade);
     return *this;
@@ -66,7 +66,7 @@ int Bureaucrat::getGrade() const
     return _grade;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(Form& form)
 {
     try {
         form.beSigned(*this);

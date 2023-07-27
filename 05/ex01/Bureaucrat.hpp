@@ -13,18 +13,18 @@ public:
     Bureaucrat();
     Bureaucrat(std::string name);
     Bureaucrat(std::string name, int grade);
-    Bureaucrat(const Bureaucrat &bureaucrat);
-    Bureaucrat &operator=(const Bureaucrat &bureaucrat);
+    Bureaucrat(const Bureaucrat& bureaucrat);
+    Bureaucrat &operator=(const Bureaucrat& bureaucrat);
     virtual ~Bureaucrat();
 
-    friend std::ostream& operator<<(std::ostream &stream, const Bureaucrat& bureaucrat);
+    friend std::ostream& operator<<(std::ostream& stream, const Bureaucrat& bureaucrat);
 
     const std::string getName() const;
     int incGrade();
     int decGrade();
     int getGrade() const;
 
-    void signForm(class Form &form);
+    void signForm(class Form& form);
 
     class GradeTooHighException : public std::exception
     {

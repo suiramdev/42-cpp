@@ -14,11 +14,11 @@ private:
     const int _execGrade;
 public:
     AForm(const std::string name, int signGrade, int execGrade);
-    AForm(const AForm &form);
-    AForm& operator=(const AForm &form);
+    AForm(const AForm& form);
+    AForm& operator=(const AForm& form);
     virtual ~AForm() = 0;
 
-    friend std::ostream& operator<<(std::ostream &stream, const AForm& form);
+    friend std::ostream& operator<<(std::ostream& stream, const AForm& form);
 
     const std::string getName() const;
 
@@ -27,7 +27,7 @@ public:
     int getSignGrade() const;
     int getExecGrade() const;
 
-    virtual void execute(const Bureaucrat &bureaucrat) const; 
+    virtual void execute(const Bureaucrat& bureaucrat) const; 
 
     class GradeTooHighException : public std::exception
     {

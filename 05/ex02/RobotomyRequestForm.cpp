@@ -10,11 +10,11 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string name) : AForm(name, 7
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &form) : AForm(form)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& form) : AForm(form)
 {
 }
 
-RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &form)
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm& form)
 {
     if (this != &form)
         AForm::operator=(form);
@@ -25,7 +25,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const
+void RobotomyRequestForm::execute(const Bureaucrat& bureaucrat) const
 {
     AForm::execute(bureaucrat);
     std::cout << "* drilling noises *" << std::endl;

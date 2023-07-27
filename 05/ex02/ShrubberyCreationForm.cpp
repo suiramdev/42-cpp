@@ -9,11 +9,11 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string name) : AForm(nam
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &form) : AForm(form)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& form) : AForm(form)
 {
 }
 
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &form)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm& form)
 {
     if (this != &form)
         AForm::operator=(form);
@@ -24,7 +24,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat &bureaucrat) const
+void ShrubberyCreationForm::execute(const Bureaucrat& bureaucrat) const
 {
     AForm::execute(bureaucrat);
     std::ofstream file(getName() + "_shrubbery");
