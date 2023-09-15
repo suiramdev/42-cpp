@@ -27,10 +27,7 @@ void PhoneBook::searchContact()
     for (int i = 0; i < 8; i++)
     {
         std::cout << std::setw(10) << i << "|";
-        std::cout << std::setw(10) << _contacts[i].firstName << "|";
-        std::cout << std::setw(10) << _contacts[i].lastName << "|";
-        std::cout << std::setw(10) << _contacts[i].nickname;
-        std::cout << std::endl;
+        _contacts[i].displayLine();
     }
     std::cout << std::endl;
     std::cout << "Enter an index: ";
@@ -38,5 +35,5 @@ void PhoneBook::searchContact()
     std::cout << std::endl;
     if (index[1] || index[0] < '0' || index[0] >= '0' + _contactCount)
         return ;
-    _contacts[index[0] - '0'].display();
+    _contacts[index[0] - '0'].displayInfos();
 }
