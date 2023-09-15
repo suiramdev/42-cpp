@@ -20,7 +20,7 @@ BUILD_DIR	:= .build
 OBJS		:= $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 
 CXX			:= c++
-CFLAGS		:= -Wall -Wextra -Werror -std=c++98
+CFLAGS		:= -Wall -Wextra -Werror -std=c++98 -g3
 
 RM          := rm -f
 MAKEFLAGS   += --silent --no-print-directory

@@ -12,11 +12,8 @@ PhoneBook::PhoneBook()
 void PhoneBook::addContact()
 {
     static int  i = 0;
-    Contact newContact;
 
-    newContact.init();
-
-    _contacts[i % 8] = newContact;
+    _contacts[i % 8].init();
     i++;
     if (_contactCount < 8)
         _contactCount++;
@@ -41,5 +38,5 @@ void PhoneBook::searchContact()
     std::cout << std::endl;
     if (index[1] || index[0] < '0' || index[0] >= '0' + _contactCount)
         return ;
-    _contacts['0' - index[0]].display();
+    _contacts[index[0] - '0'].display();
 }
