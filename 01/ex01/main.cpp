@@ -3,10 +3,8 @@
 
 int main()
 {
-    Zombie* horde;
-
-    horde = zombieHorde(4, "Jack"); 
-    delete[] horde;
-    horde = zombieHorde(9, "Harry"); 
+    Zombie* horde = zombieHorde(9, "Jack"); 
+    for (int i = 0; i < 9; i++)
+        horde[i].announce();
     delete[] horde;
 }
