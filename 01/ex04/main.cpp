@@ -23,6 +23,12 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    if (argv[2][0] == '\0' || argv[3][0] == '\0')
+    {
+        std::cerr << "Invalid arguments" << std::endl;
+        return 1;
+    }
+
     std::string inputFileName = argv[1];
 
     std::fstream inputFile;
