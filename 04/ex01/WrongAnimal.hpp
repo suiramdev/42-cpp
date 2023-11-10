@@ -2,16 +2,16 @@
 
 #include <string>
 
-class WrongAnimal
-{
+class WrongAnimal {
 protected:
-    std::string _type;
+  std::string _type;
+
 public:
-    WrongAnimal();
-    WrongAnimal(std::string type);
-    WrongAnimal(const WrongAnimal& wrongAnimal);
-    WrongAnimal& operator=(const WrongAnimal& wrongAnimal);
-    virtual ~WrongAnimal();
-    void makeSound() const;
-    std::string getType() const;
+  WrongAnimal();
+  WrongAnimal(std::string type);
+  WrongAnimal(const WrongAnimal &wrongAnimal);
+  WrongAnimal &operator=(const WrongAnimal &wrongAnimal);
+  virtual ~WrongAnimal();
+  void makeSound() const;
+  std::string getType() const;
 };
