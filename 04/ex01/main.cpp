@@ -4,8 +4,17 @@
 #include <iostream>
 
 int main() {
-  Animal *animals[4] = {new Dog(), new Dog(), new Cat(), new Cat()};
+  {
+    std::cout << "----- Test 1 -----" << std::endl;
+    Animal *animals[4] = {new Dog(), new Dog(), new Cat(), new Cat()};
 
-  for (int i = 0; i < 4; i++)
-    delete animals[i];
+    for (int i = 0; i < 4; i++)
+      delete animals[i];
+  }
+  {
+    std::cout << "----- Test 2 -----" << std::endl;
+    Cat cat;
+
+    Cat tmp = cat;
+  }
 }
