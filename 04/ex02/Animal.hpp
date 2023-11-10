@@ -3,17 +3,16 @@
 #include "Brain.hpp"
 #include <string>
 
-class Animal
-{
+class Animal {
 protected:
-    Brain* _brain;
-    std::string _type;
+  std::string _type;
+
 public:
-    Animal();
-    Animal(std::string type);
-    Animal(const Animal& animal);
-    Animal& operator=(const Animal& animal);
-    virtual ~Animal();
-    virtual void makeSound() const = 0;
-    std::string getType() const;
+  Animal();
+  Animal(std::string type);
+  Animal(const Animal &animal);
+  Animal &operator=(const Animal &animal);
+  virtual ~Animal();
+  virtual void makeSound() const = 0;
+  std::string getType() const;
 };
