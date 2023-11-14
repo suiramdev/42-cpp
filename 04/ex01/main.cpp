@@ -17,4 +17,11 @@ int main() {
 
     Cat tmp = cat;
   }
+  {
+    std::cout << "----- Test 3 -----" << std::endl;
+    Cat cat;
+
+    Cat tmp;
+    tmp = cat;
+  }
 }
