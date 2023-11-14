@@ -8,6 +8,9 @@ class AMateria {
 protected:
   std::string _type;
 
+private:
+  AMateria();
+
 public:
   AMateria(std::string const &type);
   AMateria(const AMateria &amateria);

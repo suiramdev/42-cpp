@@ -1,6 +1,8 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
+AMateria::AMateria() : _type(NULL) {}
+
 AMateria::AMateria(std::string const &type) : _type(type) {}
 
 AMateria::AMateria(const AMateria &amateria) : _type(amateria._type) {}

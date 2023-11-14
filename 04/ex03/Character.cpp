@@ -2,6 +2,8 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
+Character::Character() : _name(NULL) {}
+
 Character::Character(const std::string &name) : _name(name) {
   for (int i = 0; i < 4; i++) {
     _inventory[i] = NULL;

@@ -7,6 +7,8 @@ private:
   std::string _name;
   AMateria *_inventory[4];
 
+  Character();
+
 public:
   Character(const std::string &name);
   Character(const Character &character);
