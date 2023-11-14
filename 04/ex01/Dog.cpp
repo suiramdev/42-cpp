@@ -13,7 +13,7 @@ Dog &Dog::operator=(const Dog &dog) {
   std::cout << "Dog assignment operator called" << std::endl;
   if (this != &dog) {
     Animal::operator=(dog);
-    _brain = dog._brain;
+    *_brain = *dog._brain;
   }
   return *this;
 }

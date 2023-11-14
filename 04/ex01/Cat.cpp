@@ -13,7 +13,7 @@ Cat &Cat::operator=(const Cat &cat) {
   std::cout << "Cat assignment operator called" << std::endl;
   if (this != &cat) {
     Animal::operator=(cat);
-    _brain = cat._brain;
+    *_brain = *cat._brain;
   }
   return *this;
 }
