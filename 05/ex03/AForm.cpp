@@ -26,8 +26,9 @@ AForm &AForm::operator=(const AForm &form) {
 AForm::~AForm() {}
 
 std::ostream &operator<<(std::ostream &stream, const AForm &form) {
-  stream << form._name << ", sign grade " << form._signGrade << ", exec grade "
-         << form._execGrade << ", signed " << form._signed;
+  stream << form.getName() << ", sign grade " << form.getSignGrade()
+         << ", exec grade " << form.getExecGrade() << ", signed "
+         << form.isSigned();
   return stream;
 }
 

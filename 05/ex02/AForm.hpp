@@ -19,8 +19,6 @@ public:
   AForm &operator=(const AForm &form);
   virtual ~AForm() = 0;
 
-  friend std::ostream &operator<<(std::ostream &stream, const AForm &form);
-
   const std::string getName() const;
 
   bool isSigned() const;
@@ -45,3 +43,5 @@ public:
     const char *what() const throw();
   };
 };
+
+std::ostream &operator<<(std::ostream &stream, const AForm &form);

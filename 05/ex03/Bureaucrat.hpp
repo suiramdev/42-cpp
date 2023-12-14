@@ -19,9 +19,6 @@ public:
   Bureaucrat &operator=(const Bureaucrat &bureaucrat);
   virtual ~Bureaucrat();
 
-  friend std::ostream &operator<<(std::ostream &stream,
-                                  const Bureaucrat &bureaucrat);
-
   const std::string getName() const;
   int incGrade();
   int decGrade();
@@ -40,3 +37,5 @@ public:
     const char *what() const throw();
   };
 };
+
+std::ostream &operator<<(std::ostream &stream, const Bureaucrat &bureaucrat);
