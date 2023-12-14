@@ -20,7 +20,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void ShrubberyCreationForm::execute(const Bureaucrat &bureaucrat) const {
   AForm::execute(bureaucrat);
-  std::ofstream file(getName() + "_shrubbery");
+  std::ofstream file((getName() + "_shrubbery").c_str());
   if (!file.is_open())
     throw std::runtime_error("Error: could not open file.");
   file << "      /\\\n";

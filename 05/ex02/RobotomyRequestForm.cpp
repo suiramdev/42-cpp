@@ -1,5 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
+#include <cstdlib>
 #include <iostream>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("default", 72, 45) {}
