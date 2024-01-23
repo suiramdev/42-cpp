@@ -3,6 +3,7 @@
 #include "Base.hpp"
 #include "C.hpp"
 #include <cstdlib>
+#include <exception>
 #include <iostream>
 
 Base *generate() {
@@ -34,21 +35,21 @@ void identify(Base &p) {
     A &a = dynamic_cast<A &>(p);
     (void)a;
     std::cout << "Identified reference A" << std::endl;
-  } catch (std::bad_cast &e) {
+  } catch (std::exception &e) {
   }
 
   try {
     B &b = dynamic_cast<B &>(p);
     (void)b;
-    std::cout << "Identeified reference B" << std::endl;
-  } catch (std::bad_cast &e) {
+    std::cout << "Identified reference B" << std::endl;
+  } catch (std::exception &e) {
   }
 
   try {
     C &c = dynamic_cast<C &>(p);
     (void)c;
     std::cout << "Identified reference C" << std::endl;
-  } catch (std::bad_cast &e) {
+  } catch (std::exception &e) {
   }
 }
 
@@ -57,6 +58,8 @@ int main() {
     Base *ptr = generate();
 
     identify(ptr);
+    std::cout << std::endl;
     identify(*ptr);
+    std::cout << std::endl;
   }
 }
