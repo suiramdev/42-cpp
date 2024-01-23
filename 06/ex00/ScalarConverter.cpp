@@ -1,5 +1,7 @@
 #include "ScalarConverter.hpp"
+#include <cctype>
 #include <iostream>
+#include <sstream>
 
 ScalarConverter::ScalarConverter() {}
 
@@ -26,7 +28,7 @@ Literals ScalarConverter::identify(std::string input) {
     i++;
   while (isdigit(input[i]))
     i++;
-  if (i > 1) {
+  if (i >= 1) {
     if (input[i] == '.') {
       i++;
       while (isdigit(input[i]))
@@ -50,7 +52,8 @@ void ScalarConverter::fromChar(std::string input) {
 }
 
 void ScalarConverter::fromInt(std::string input) {
-  int theInt = std::stoi(input);
+  int theInt;
+  std::istringstream(input) >> theInt;
 
   if (std::isprint(theInt))
     std::cout << "char: '" << static_cast<char>(theInt) << "'" << std::endl;
@@ -62,7 +65,8 @@ void ScalarConverter::fromInt(std::string input) {
 }
 
 void ScalarConverter::fromFloat(std::string input) {
-  float theFloat = std::stof(input);
+  float theFloat;
+  std::istringstream(input) >> theFloat;
   int theInt = static_cast<int>(theFloat);
 
   if (std::isprint(theInt))
@@ -81,7 +85,8 @@ void ScalarConverter::fromFloat(std::string input) {
 }
 
 void ScalarConverter::fromDouble(std::string input) {
-  double theDouble = std::stod(input);
+  double theDouble;
+  std::istringstream(input) >> theDouble;
   int theInt = static_cast<int>(theDouble);
 
   if (std::isprint(theInt))
@@ -101,9 +106,19 @@ void ScalarConverter::fromDouble(std::string input) {
 
 void ScalarConverter::fromLiteral(std::string input) {
   std::cout << "char: impossible" << std::endl;
-  std::cout << "int: impossible" << std::endl;
-  std::cout << "float: " << strtof(input.c_str(), NULL) << std::endl;
-  std::cout << "double: " << strtod(input.c_str(), NULL) << std::endl;
+  if (input == "nan" || input == "nanf") {
+    std::cout << "int: impossible" << std::endl;
+    std::cout << "float: nanf" << std::endl;
+    std::cout << "double: nan" << std::endl;
+  } else if (input == "+inf" || input == "+inff") {
+    std::cout << "int: +inf" << std::endl;
+    std::cout << "float: +inff" << std::endl;
+    std::cout << "double: +inf" << std::endl;
+  } else if (input == "-inf" || input == "-inff") {
+    std::cout << "int: -inf" << std::endl;
+    std::cout << "float: -inff" << std::endl;
+    std::cout << "double: -inf" << std::endl;
+  }
 }
 
 void ScalarConverter::convert(std::string input) {
