@@ -1,4 +1,6 @@
 #include "Array.hpp"
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 
 int main() {
@@ -6,6 +8,8 @@ int main() {
   Array<int> arr2(10);
 
   std::cout << "Create arr" << std::endl;
+
+  srand(time(0));
 
   for (unsigned int i = 0; i < arr.size(); i++) {
     arr[i] = rand() % 100;
