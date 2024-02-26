@@ -10,10 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= span
+NAME		:= mutantStack
 
-SRCS		:= main.cpp \
-           Span.cpp
+SRCS		:= main.cpp
 
 BUILD_DIR	:= .build
 OBJS		:= $(SRCS:%.cpp=$(BUILD_DIR)/%.o)

@@ -2,24 +2,15 @@
 
 #include <stack>
 
-template <typename T> class MutantStack {
-private:
-  std::stack<T> _stack;
-
+template <typename T> class MutantStack : public std::stack<T> {
 public:
-  MutantStack() {}
-  ~MutantStack() {}
-
-  void push(T const &value) { _stack.push(value); }
-
-  void pop() { _stack.pop(); }
-
-  T &top() { return _stack.top(); }
-
-  size_t size() const { return _stack.size(); }
-
   typedef typename std::stack<T>::container_type::iterator iterator;
 
-  iterator begin() { return _stack.begin(); }
-  iterator end() { return _stack.end(); }
+  typename std::stack<T>::container_type::iterator begin() {
+    return this->c.begin();
+  }
+
+  typename std::stack<T>::container_type::iterator end() {
+    return this->c.end();
+  }
 };
