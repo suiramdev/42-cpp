@@ -7,8 +7,12 @@ private:
   std::vector<int> _v;
 
 public:
+  Span();
   Span(unsigned int N);
+  Span(const Span &other);
   ~Span();
+
+  Span &operator=(const Span &other);
 
   void addNumber(int number);
 

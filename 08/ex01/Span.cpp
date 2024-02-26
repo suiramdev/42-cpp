@@ -2,9 +2,22 @@
 #include <algorithm>
 #include <vector>
 
+Span::Span() : _N(0) {}
+
 Span::Span(unsigned int N) : _N(N) {}
 
+Span::Span(const Span &other) {
+  _N = other._N;
+  _v = other._v;
+}
+
 Span::~Span() {}
+
+Span &Span::operator=(const Span &other) {
+  _N = other._N;
+  _v = other._v;
+  return *this;
+}
 
 void Span::addNumber(int number) {
   if (_v.size() >= _N)
