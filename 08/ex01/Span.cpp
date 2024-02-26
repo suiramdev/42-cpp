@@ -1,5 +1,6 @@
 #include "Span.hpp"
 #include <algorithm>
+#include <iostream>
 #include <vector>
 
 Span::Span() : _N(0) {}
@@ -36,9 +37,9 @@ int Span::shortestSpan() {
 
   int shortest = tmp[tmp.size() - 1] - tmp[0];
 
-  for (unsigned long i = 0; i < tmp.size(); ++i) {
-    if (tmp[i] - tmp[i - 1] < shortest)
-      shortest = tmp[i] - tmp[i - 1];
+  for (unsigned long i = 0; i < tmp.size() - 1; i++) {
+    if (tmp[i + 1] - tmp[i] < shortest)
+      shortest = tmp[i + 1] - tmp[i];
   }
 
   return shortest;
