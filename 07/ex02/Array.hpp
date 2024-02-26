@@ -1,7 +1,7 @@
 #pragma once
 #include <exception>
 
-template <class T> class Array {
+template <typename T> class Array {
 private:
   T *_arr;
   unsigned int _size;
