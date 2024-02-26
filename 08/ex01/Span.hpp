@@ -11,6 +11,14 @@ public:
   ~Span();
 
   void addNumber(int number);
+
+  template <typename T>
+  void addNumbers(typename T::iterator begin, typename T::iterator end) {
+    for (typename T::iterator it = begin; it != end; ++it) {
+      addNumber(*it);
+    }
+  }
+
   int shortestSpan();
   int longestSpan();
 };
