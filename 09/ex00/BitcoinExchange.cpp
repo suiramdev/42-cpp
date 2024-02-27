@@ -112,15 +112,14 @@ void BitcoinExchange::process(const std::string &filename) {
         double amount;
         std::istringstream(elems[1]) >> amount;
 
-        value *= amount;
-
-        if (value > 1000) {
+        if (amount > 1000) {
           std::cout << "Error: too large number." << std::endl;
-        } else if (value < 0) {
+        } else if (amount < 0) {
           std::cout << "Error: not a positive number." << std::endl;
-        } else {
-          std::cout << date << " => " << amount << " = " << value << std::endl;
         }
+
+        std::cout << date << " => " << amount << " = " << value * amount
+                  << std::endl;
       } else {
         std::cout << date << " = " << value << std::endl;
       }
