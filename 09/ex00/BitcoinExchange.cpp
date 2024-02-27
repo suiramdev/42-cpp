@@ -117,7 +117,7 @@ void BitcoinExchange::process(const std::string &filename) {
         if (value > 1000) {
           std::cout << "Error: too large number." << std::endl;
         } else if (value < 0) {
-          std::cout << "Error: too small number." << std::endl;
+          std::cout << "Error: not a positive number." << std::endl;
         } else {
           std::cout << date << " => " << amount << " = " << value << std::endl;
         }
