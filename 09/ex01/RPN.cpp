@@ -47,15 +47,19 @@ int RPN::evaluate(const std::string &expression) {
     if (iss >> number) {
       stack.push(number);
     } else {
+      if (stack.size() < 2) {
+        throw std::runtime_error("Invalid expression");
+      }
       int operand2 = stack.top();
       stack.pop();
       int operand1 = stack.top();
       stack.pop();
-      if (token.length() > 1) {
-        throw std::runtime_error("Invalid expression");
-      }
       stack.push(applyOperation(token[0], operand1, operand2));
     }
+  }
+
+  if (stack.size() != 1) {
+    throw std::runtime_error("Invalid expression");
   }
 
   return stack.top();
