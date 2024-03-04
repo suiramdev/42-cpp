@@ -23,17 +23,18 @@ std::map<int, std::string> split(const std::string &line, char delim) {
 }
 
 time_t parseDate(const std::string &date) {
-  tm tm;
-  if (strptime(date.c_str(), "%Y-%m-%d", &tm) == nullptr) {
+  time_t now = time(0);
+  struct tm *tm = localtime(&now);
+  if (strptime(date.c_str(), "%Y-%m-%d", tm) == NULL) {
     throw std::runtime_error("Invalid date format");
   }
 
-  return mktime(&tm);
+  return mktime(tm);
 }
 
 BitcoinExchange::BitcoinExchange() {}
 
-BitcoinExchange::BitcoinExchange(const std::string &filename) {
+BitcoinExchange::BitcoinExchange(const char *filename) {
   std::ifstream file(filename);
 
   if (!file.is_open()) {
@@ -49,16 +50,16 @@ BitcoinExchange::BitcoinExchange(const std::string &filename) {
       throw std::runtime_error("The data file is invalid");
     }
 
+    std::istringstream dateSS(elems[0]);
     std::string date;
-    std::istringstream(elems[0]) >> date;
+    dateSS >> date;
 
-    double value;
-    std::istringstream(elems[1]) >> value;
+    std::istringstream valueSS(elems[1]);
+    float value;
+    valueSS >> value;
 
     _data[parseDate(date)] = value;
   }
-
-  file.close();
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
@@ -74,9 +75,9 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
-double BitcoinExchange::getValueAt(const time_t &date) const {
-  double value = 0;
-  for (std::map<time_t, double>::const_iterator it = _data.begin();
+float BitcoinExchange::getValueAt(const time_t &date) const {
+  float value = 0;
+  for (std::map<time_t, float>::const_iterator it = _data.begin();
        it != _data.end(); ++it) {
     if (it->first <= date) {
       value = it->second;
@@ -86,7 +87,7 @@ double BitcoinExchange::getValueAt(const time_t &date) const {
   return value;
 }
 
-void BitcoinExchange::process(const std::string &filename) {
+void BitcoinExchange::process(const char *filename) {
   std::ifstream file(filename);
 
   if (!file.is_open()) {
@@ -102,20 +103,24 @@ void BitcoinExchange::process(const std::string &filename) {
       throw std::runtime_error("The input file is invalid");
     }
 
+    std::istringstream dateSS(elems[0]);
     std::string date;
-    std::istringstream(elems[0]) >> date;
+    dateSS >> date;
 
     try {
-      double value = getValueAt(parseDate(date));
+      float value = getValueAt(parseDate(date));
 
       if (elems.size() > 1) { // A value is provided
-        double amount;
-        std::istringstream(elems[1]) >> amount;
+        std::istringstream amountSS(elems[1]);
+        float amount;
+        amountSS >> amount;
 
         if (amount > 1000) {
           std::cout << "Error: too large number." << std::endl;
+          continue;
         } else if (amount < 0) {
           std::cout << "Error: not a positive number." << std::endl;
+          continue;
         }
 
         std::cout << date << " => " << amount << " = " << value * amount
@@ -127,6 +132,4 @@ void BitcoinExchange::process(const std::string &filename) {
       std::cout << "Error: bad input => " << date << std::endl;
     }
   }
-
-  file.close();
 }

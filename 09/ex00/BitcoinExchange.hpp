@@ -6,9 +6,9 @@
 
 class BitcoinExchange {
 private:
-  std::map<time_t, double> _data;
+  std::map<time_t, float> _data;
 
-  double getValueAt(const time_t &time) const;
+  float getValueAt(const time_t &time) const;
 
 public:
   BitcoinExchange();
@@ -18,7 +18,7 @@ public:
    *
    * @param filename
    */
-  BitcoinExchange(const std::string &filename);
+  BitcoinExchange(const char *filename);
 
   BitcoinExchange(const BitcoinExchange &other);
   BitcoinExchange &operator=(const BitcoinExchange &other);
@@ -30,5 +30,5 @@ public:
    *
    * @param filename
    */
-  void process(const std::string &filename);
+  void process(const char *filename);
 };
