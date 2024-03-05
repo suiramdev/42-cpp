@@ -1,2 +1,5 @@
 btc
 .build/
+data.csv
+input.csv
+text.csv

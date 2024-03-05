@@ -76,15 +76,19 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 BitcoinExchange::~BitcoinExchange() {}
 
 float BitcoinExchange::getValueAt(const time_t &date) const {
-  float value = 0;
+  std::map<time_t, float>::const_iterator closest = _data.end();
   for (std::map<time_t, float>::const_iterator it = _data.begin();
        it != _data.end(); ++it) {
     if (it->first <= date) {
-      value = it->second;
+      closest = it;
     }
   }
 
-  return value;
+  if (closest == _data.end()) {
+    throw std::runtime_error("No data available");
+  }
+
+  return closest->second;
 }
 
 void BitcoinExchange::process(const char *filename) {
