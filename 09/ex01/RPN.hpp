@@ -9,8 +9,8 @@ private:
   RPN &operator=(const RPN &other);
   ~RPN();
 
-  static int applyOperation(char op, int &operand1, int &operand2);
+  static float applyOperation(char op, float &operand1, float &operand2);
 
 public:
-  static int evaluate(const std::string &expression);
+  static float evaluate(const std::string &expression);
 };

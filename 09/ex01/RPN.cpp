@@ -14,7 +14,7 @@ RPN &RPN::operator=(const RPN &other) {
 
 RPN::~RPN() {}
 
-int RPN::applyOperation(char op, int &operand1, int &operand2) {
+float RPN::applyOperation(char op, float &operand1, float &operand2) {
   switch (op) {
   case '+':
     return operand1 + operand2;
@@ -36,23 +36,23 @@ int RPN::applyOperation(char op, int &operand1, int &operand2) {
   }
 }
 
-int RPN::evaluate(const std::string &expression) {
-  std::stack<int> stack;
+float RPN::evaluate(const std::string &expression) {
+  std::stack<float> stack;
 
   std::istringstream iss(expression);
   std::string token;
   while (iss >> token) {
     std::istringstream iss(token);
-    int number;
+    float number;
     if (iss >> number) {
       stack.push(number);
     } else {
       if (stack.size() < 2) {
         throw std::runtime_error("Invalid expression");
       }
-      int operand2 = stack.top();
+      float operand2 = stack.top();
       stack.pop();
-      int operand1 = stack.top();
+      float operand1 = stack.top();
       stack.pop();
       stack.push(applyOperation(token[0], operand1, operand2));
     }
