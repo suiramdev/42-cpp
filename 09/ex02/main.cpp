@@ -37,7 +37,7 @@ void printContainer(const Container<int, std::allocator<int> > &container) {
       it != container.end(); ++it) {
     std::cout << *it << " ";
   }
-  std::cout << std::endl;
+  std::cout << std::endl << std::endl;
 }
 
 int main(int argc, char *argv[]) {
@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
     std::cout << "After sorting: ";
     printContainer(vec);
 
-    std::cout << "Time with std::vector : " << std::fixed << std::setprecision(5) << sortVectorTime << " us" << std::endl;
+    std::cout << "Time with std::vector : " << std::fixed << std::setprecision(5) << sortVectorTime << " us" << std::endl << std::endl;
     std::cout << "Time with std::deque : " << std::fixed << std::setprecision(5) << sortDequeTime << " us" << std::endl;
   } catch (const std::exception &e) {
     std::cerr << "Error: " << e.what() << std::endl;

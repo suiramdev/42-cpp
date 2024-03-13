@@ -108,7 +108,7 @@ private:
 
     jacobsthalNumbers[0] = 0;
     jacobsthalNumbers[1] = 1;
-    for (size_t i = 2; i < size; i++) {
+    for (size_t i = 2; indexes.size() < size; i++) {
       
       jacobsthalNumbers[i] = jacobsthalNumbers[i - 1] + 2 * jacobsthalNumbers[i - 2];
 
@@ -116,7 +116,7 @@ private:
         indexes.push_back(jacobsthalNumbers[i]);
       }
 
-      for (int j = lastJacobsthalNumber; j < jacobsthalNumbers[i]; j++) {
+      for (int j = jacobsthalNumbers[i]; j > lastJacobsthalNumber; j--) {
         indexes.push_back(j);
       }
 
@@ -168,7 +168,7 @@ public:
 
     for (size_t i = 0; i < insertionIndexes.size(); i++) {
       if (size_t(insertionIndexes[i]) >= sortedPairs.size()) {
-        continue;
+        break;
       }
 
       typename PairContainer::const_iterator it = sortedPairs.begin();
