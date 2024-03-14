@@ -91,6 +91,21 @@ float BitcoinExchange::getValueAt(const time_t &date) const {
   return closest->second;
 }
 
+bool isNumber(const std::string &s) {
+  size_t i = 0;
+  if (s[0] == '-' || s[0] == '+') {
+    i = 1;
+  }
+
+  for (; i < s.size(); i++) {
+    if (!isspace(s[i]) && !isdigit(s[i]) && s[i] != '.') {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 void BitcoinExchange::process(const char *filename) {
   std::ifstream file(filename);
 
@@ -116,6 +131,10 @@ void BitcoinExchange::process(const char *filename) {
 
       if (elems.size() > 1) { // A value is provided
         std::istringstream amountSS(elems[1]);
+        if (!isNumber(elems[1])) {
+          std::cout << "Error: not a number." << std::endl;
+          continue;
+        }
         float amount;
         amountSS >> amount;
 
