@@ -2,10 +2,10 @@
 
 #include <cmath>
 #include <ctime>
-#include <memory>
-#include <utility>
 #include <iostream>
+#include <memory>
 #include <stdint.h>
+#include <utility>
 
 template <template <typename, typename> class ContainerType> class PmergeMe {
 private:
@@ -14,7 +14,8 @@ private:
 
   /**
    * @brief Make pairs, sort the elements of each pair and sort the entire
-   * container (based on the first value of the pair, otherwise known as << a >> or << main >>).
+   * container (based on the first value of the pair, otherwise known as << a >>
+   * or << main >>).
    *
    * @param container the container of elements
    * @return a container of sorted pairs
@@ -82,17 +83,18 @@ private:
     }
   }
 
-  static typename ChainContainer::iterator findInsertPosition(ChainContainer &container, int value) {
+  static typename ChainContainer::iterator
+  findInsertPosition(ChainContainer &container, int value) {
     size_t low = 0;
     size_t high = container.size();
 
     while (low < high) {
-        int mid = low + (high - low) / 2;
+      int mid = low + (high - low) / 2;
 
-        if (container[mid] < value)
-            low = mid + 1;
-        else
-            high = mid;
+      if (container[mid] < value)
+        low = mid + 1;
+      else
+        high = mid;
     }
 
     typename ChainContainer::iterator it = container.begin();
@@ -109,8 +111,9 @@ private:
     jacobsthalNumbers[0] = 0;
     jacobsthalNumbers[1] = 1;
     for (size_t i = 2; indexes.size() < size; i++) {
-      
-      jacobsthalNumbers[i] = jacobsthalNumbers[i - 1] + 2 * jacobsthalNumbers[i - 2];
+
+      jacobsthalNumbers[i] =
+          jacobsthalNumbers[i - 1] + 2 * jacobsthalNumbers[i - 2];
 
       if (i != 2) {
         indexes.push_back(jacobsthalNumbers[i]);
@@ -147,6 +150,10 @@ public:
   static double sort(ChainContainer &container) {
     clock_t start = clock();
 
+    if (container.size() <= 1) {
+      return static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
+    }
+
     int last = -1;
 
     if (container.size() % 2 != 0) {
@@ -157,14 +164,17 @@ public:
     // container (based on the first value of the pair, otherwise known as `a`).
     PairContainer sortedPairs = makeSortedPairs(container);
 
-    // Finally, we form a list from the `a`s, the "main-chain", into which we will proceed insertion from the `b`s.
+    // Finally, we form a list from the `a`s, the "main-chain", into which we
+    // will proceed insertion from the `b`s.
     container.clear();
     container.push_back(sortedPairs[0].second);
-    for (typename PairContainer::const_iterator it = sortedPairs.begin(); it != sortedPairs.end(); ++it) {
+    for (typename PairContainer::const_iterator it = sortedPairs.begin();
+         it != sortedPairs.end(); ++it) {
       container.push_back(it->first);
     }
 
-    ChainContainer insertionIndexes = generateInsertionIndexes(sortedPairs.size());
+    ChainContainer insertionIndexes =
+        generateInsertionIndexes(sortedPairs.size());
 
     for (size_t i = 0; i < insertionIndexes.size(); i++) {
       if (size_t(insertionIndexes[i]) >= sortedPairs.size()) {
@@ -174,12 +184,14 @@ public:
       typename PairContainer::const_iterator it = sortedPairs.begin();
       std::advance(it, insertionIndexes[i]);
 
-      typename ChainContainer::iterator insertionPoint = findInsertPosition(container, it->second);
+      typename ChainContainer::iterator insertionPoint =
+          findInsertPosition(container, it->second);
       container.insert(insertionPoint, it->second);
     }
 
     if (last != -1) {
-      typename ChainContainer::iterator insertionPoint = findInsertPosition(container, last);
+      typename ChainContainer::iterator insertionPoint =
+          findInsertPosition(container, last);
       container.insert(insertionPoint, last);
     }
 
