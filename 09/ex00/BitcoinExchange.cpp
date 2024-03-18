@@ -93,8 +93,11 @@ float BitcoinExchange::getValueAt(const time_t &date) const {
 
 bool isNumber(const std::string &s) {
   size_t i = 0;
-  if (s[0] == '-' || s[0] == '+') {
-    i = 1;
+  while (i < s.size() && isspace(s[i])) {
+    i++;
+  }
+  if (s[i] == '-' || s[i] == '+') {
+    i++;
   }
 
   for (; i < s.size(); i++) {
