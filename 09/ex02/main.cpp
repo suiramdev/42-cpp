@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     std::vector<int> vec;
     std::deque<int> deq;
     for (int i = 1; i < argc; i++) {
-      int number = std::stoi(argv[i]);
+      int number = std::atoi(argv[i]);
       if (number < 0) {
         std::cerr << "The sequence contain(s) negative number(s)" << std::endl;
         return EXIT_FAILURE;

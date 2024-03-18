@@ -1,7 +1,6 @@
 #pragma once
 
 #include <algorithm>
-#include <cstdint>
 #include <memory>
 #include <utility>
 #include <iterator>
@@ -81,7 +80,7 @@ public:
     }
 
     // Difference between consecutive Jacobsthal numbers up to 64
-    static const uint64_t jacobsthal_diff[] = {
+    static const u_int64_t jacobsthal_diff[] = {
         2u, 2u, 6u, 10u, 22u, 42u, 86u, 170u, 342u, 682u, 1366u,
         2730u, 5462u, 10922u, 21846u, 43690u, 87382u, 174762u, 349526u, 699050u,
         1398102u, 2796202u, 5592406u, 11184810u, 22369622u, 44739242u, 89478486u,
@@ -121,7 +120,7 @@ public:
 
     // Insertion from Jacobsthal numbers
     for (size_t i = 0; i < 64; i++) {
-      uint64_t diff = jacobsthal_diff[i];
+      u_int64_t diff = jacobsthal_diff[i];
       if (diff > static_cast<size_t>(std::distance(limitIt, pairs.end()))) break;
       typename Container<std::pair<int, int> >::iterator it = limitIt;
       std::advance(it, diff);
