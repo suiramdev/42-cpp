@@ -116,26 +116,24 @@ public:
     }
     pairs.erase(pairs.begin());
 
-    typename Container<std::pair<int, int> >::iterator limitIt = pairs.begin();
-
     // Insertion from Jacobsthal numbers
     for (size_t i = 0; i < 64; i++) {
       u_int64_t diff = jacobsthal_diff[i];
-      if (diff > static_cast<size_t>(std::distance(limitIt, pairs.end()))) break;
-      typename Container<std::pair<int, int> >::iterator it = limitIt;
+      if (diff >= pairs.size()) break;
+      typename Container<std::pair<int, int> >::iterator it = pairs.begin();
       std::advance(it, diff);
 
-      do {
+      while (true) {
         typename Container<int>::iterator insertIt = std::upper_bound(container.begin(), container.end(), it->second);
         container.insert(insertIt, it->second);
+        it = pairs.erase(it);
+        if (it == pairs.begin()) break;
         --it;
-      } while (it != limitIt);
-
-      std::advance(limitIt, diff);
+      }
     }
 
     // Insert the last elements left
-    for (typename Container<std::pair<int, int> >::iterator it = limitIt;
+    for (typename Container<std::pair<int, int> >::iterator it = pairs.begin();
        it != pairs.end(); ++it) {
       typename Container<int>::iterator insertIt = std::upper_bound(container.begin(), container.end(), it->second);
       container.insert(insertIt, it->second);
